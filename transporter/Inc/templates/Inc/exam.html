@@ -1,0 +1,32 @@
+{% extends 'Inc/admin.html' %}
+	
+	{% block admin %}
+
+		
+			{% for q in form %}
+			<form method="post" action="#">
+			{% csrf_token %}
+				
+				<div>
+					<tr>
+						<td>Q{{ forloop.counter }}</td>
+						<td>{{ q.SetQuestion }}</td>
+					</tr>
+					<br>	
+					<li><input type="radio" name="option" value="A">A{{ q.a }}</li>
+					<li><input type="radio" name="option" value="B">B{{ q.b }}</li>
+					<li><input type="radio" name="option" value="C">C{{ q.c }}</li>
+					<li><input type="radio" name="option" value="D">D{{ q.d }}</li>
+				
+<!---
+			 	{{ field }}<a href="#"> {{ field.label_tag}}<a/>
+			 		text
+-->				
+			 <input type="Submit" name="Submit" value="Save"/>
+			</div>
+			
+			</form>
+			{% endfor %}
+			{{ answer }}
+			
+	{% endblock %}

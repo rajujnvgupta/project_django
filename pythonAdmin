@@ -1,0 +1,4 @@
+python manage.py createsuperuser
+
+username = thetransporter
+email   = rajujnvgupta@gmail.com

@@ -1,0 +1,52 @@
+{% extends 'Inc/base.html' %}
+
+{% block body %}
+  
+    <div>
+      {% if messages %}
+      <ul class="messages">
+        {% for k in messages %}
+        <li style="color : red ">{{ k }}</li>
+        {% endfor %}   
+      </ul>
+      {% endif %}
+    </div><br>
+
+  <h2>Login</h2>
+  <form method="POST">
+    <p align="center">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+    </p>
+  </form>
+
+{% endblock %}
+
+
+<!--
+
+  <h2>Log in to My Site</h2>
+  {% if form.errors %}
+    <p style="color: red">Your username and password didn't match. Please try again.</p>
+  {% endif %}
+  <form method="POST" >
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}" />
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}<br>
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+        {% if field.help_text %}
+          <p><small style="color: grey">{{ field.help_text }}</small></p>
+        {% endif %}
+      </p>
+    {% endfor %}
+    <button type="submit">Log In</button>
+    <a href="{% url 'Inc/signup' %}">New to My Site? Sign up</a>
+  </form>
+
+-->

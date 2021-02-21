@@ -1,0 +1,15 @@
+{% extends 'Inc/admin.html' %}
+	{% block admin %}
+	  <form method="POST" enctype="multipart/form-data" action="{% url 'Inc:question' %}"> 
+	  {% csrf_token %}
+			   
+			   {% for form in form %}
+			  	  <p align="center">
+			  		{{ form.label_tag }}
+			       <input type="text" name="Q_number" ,width="50" height="50">
+			       <br>       
+			      </p>
+			    {% endfor %}
+			     <input type="submit" value="Save">
+	  </form>
+	{% endblock %}

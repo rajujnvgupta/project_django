@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<p>quiz start after</p>
+{{ quiztime }}
+
+<p id="demo"></p>
+
+<script>
+var countDownDate = new Date("{{ quiztime }}").getTime();
+var x = setInterval(function(){
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+    
+  // If the count down is over, write some text 
+  if (distance < 0){
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "<div class=\"progress mb-3\">" +
+ "<div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"{{ progress }}\" aria-valuemin=\"0\" " +
+ "aria-valuemax=\"100\" "+
+"style=\"width: {{ progress }}\"></div> </div>" +
+  "<h2 class=\"mb-3\">{{ quiz.name }}</h2> " +
+  "<p class=\"lead\">{{ question.text }}</p>" +
+  "<form method=\"post\" novalidate>" +
+  "{% csrf_token %}" +
+   " {{ form|crispy }}" +
+  "<button type=\"submit\" class=\"btn btn-primary\">Next →</button>" +
+  "</form>";
+  }
+}, 1000);
+</script>
+
+ <p id="fuck"></p>
+
+{% endblock %}

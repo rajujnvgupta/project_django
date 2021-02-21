@@ -1,0 +1,82 @@
+
+django-admin.py startproject website
+python manage.py startapp music
+
+python manage.py migrate
+#database command in django 
+#after creation of models.py file creation 
+
+python manage.py migrations music
+#run to update modification in database
+python manage.py makemigragtions music
+
+python manage.py sqlmigrate music 0001
+#run to apply the changes in database
+python manage.py migrate
+
+#database django shell API 
+
+python manage.py shell
+
+from music.models import Album , Song
+
+Album.objects.all()
+
+a = Album(artist = "Taylor Swift" , album_title = "Red" , genre = "Country" , album_logo = "https://www.oldies.com/product-view/24120M.html")
+#run below save commmand after every insertion in terminal
+a.save()
+
+a.artist
+
+a.album_title
+
+a.id
+
+a.pk
+
+b = Album()
+
+b.artist ="myty"
+b.album_title = "high school"
+b.genre = "punk"
+b.album_logo = "give a valid link of image"
+
+b.save();
+
+Album.objects.all()
+
+#pick up a particular row
+Album.objects.filter(id=1)
+
+Album.objects.filter(id=2)
+
+Album.objects.filter(id=3)
+
+Album.objects.filter(artist__startswith='Taylor')
+
+#manage database from admin environment
+python manage.py createsuperuser
+
+album1 = Album.objects.get(pk=1)
+album1.artist
+song = Song()
+song.album = album1
+song.file_type = 'mp3'
+song.song_title = 'Love me like you do'
+song.save()
+album1.song_set.all()
+album1.song_set_create(song_title = 'sing me to sleep' , file_type = 'mp3')
+album1.song_set_count()
+
+
+##git hub command 
+
+
+git init
+git status
+git add Inc
+git statusgit remote add origin https://github.com/rajujnvgupta/thetransporter
+git remote -V
+git commit -m "second commit"
+git remote add origin https://github.com/rajujnvgupta/thetransporter
+git push origin master

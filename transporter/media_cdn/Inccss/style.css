@@ -1,0 +1,31 @@
+
+body{
+	
+	margin: 0;
+	background : blue;
+}
+
+br {
+   display: block;
+   margin: 10px 0;
+}
+
+.navbar-brand{
+	font-family: cursive;
+}
+
+.small{
+	color: grey
+}
+
+.p{
+	color: blue;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+#demo{
+	color: red;
+}

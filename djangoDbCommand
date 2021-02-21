@@ -1,0 +1,118 @@
+
+django-admin.py startproject website
+python manage.py startapp music
+
+python manage.py migrate
+#database command in django 
+#after creation of models.py file creation 
+
+python manage.py migrations music
+#run to update modification in database
+python manage.py makemigragtions music
+
+python manage.py sqlmigrate music 0001
+#run to apply the changes in database
+python manage.py migrate
+
+#inialize virtual environment
+. env/bin/activate
+python manage.py runserver
+
+#database django shell API 
+
+python manage.py shell
+
+from music.models import Album , Song
+
+Album.objects.all()
+
+a = Album(artist = "Taylor Swift" , album_title = "Red" , genre = "Country" , album_logo = "https://www.oldies.com/product-view/24120M.html")
+#run below save commmand after every insertion in terminal
+a.save()
+
+a.artist
+
+a.album_title
+
+a.id
+
+a.pk
+
+b = Album()
+
+b.artist ="myty"
+b.album_title = "high school"
+b.genre = "punk"
+b.album_logo = "give a valid link of image"
+
+b.save();
+
+Album.objects.all()
+
+#pick up a particular row
+Album.objects.filter(id=1)
+
+Album.objects.filter(id=2)
+
+Album.objects.filter(id=3)
+
+Album.objects.filter(artist__startswith='Taylor')
+
+#manage database from admin environment
+python manage.py createsuperuser
+
+album1 = Album.objects.get(pk=1)
+album1.artist
+song = Song()
+song.album = album1
+song.file_type = 'mp3'
+song.song_title = 'Love me like you do'
+song.save()
+album1.song_set.all()
+album1.song_set_create(song_title = 'sing me to sleep' , file_type = 'mp3')
+album1.song_set_count()
+#below query display only attribute not foreigkey
+
+Profile.objects.filter(user__username__exact="karan")
+
+##git hub command 
+#create a new repository on the command line
+
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/rajujnvgupta/java.git
+git push -u origin master
+
+# push an existing repository from the command line
+
+git remote add origin https://github.com/rajujnvgupta/java.git
+git push -u origin master
+
+
+queryset=Quiz.objects.all()
+queryset[0].quizetime
+
+##
+##django query
+##
+  ##print(p)
+        #z = p.profile_pic.create(profile='profile_picture/user.jpeg')
+        #print(z)
+        #p.save()
+        #print(user.pk)
+        #print("asdfasdfadsfadfasdf")
+        #p = User.objects.get(pk=user.pk)
+        #p=Profile.objects.get(pk=p)
+        #print("asdfasdfads")
+        #print(p)
+        #z = p.create(profile='profile_picture/user.jpeg')
+        #z.save()
+        #print(z)
+        #print("asdfasdfads")
+        #z.update(profile='profile_picture/user.jpeg')
+        #p.save()
+        #default_image_upload = Profile()
+        #default_image_upload.set_image_to_default()
+        #Profile().set_image_to_default(self)
+        #profile_pic.objects.filter(user=user).set_image_to_default()

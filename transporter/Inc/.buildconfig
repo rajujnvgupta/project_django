@@ -1,0 +1,10 @@
+[default]
+name=Default
+runtime=host
+config-opts=
+run-opts=
+prefix=/home/raju/.cache/gnome-builder/install/Inc/host
+app-id=
+postbuild=
+prebuild=
+default=true
